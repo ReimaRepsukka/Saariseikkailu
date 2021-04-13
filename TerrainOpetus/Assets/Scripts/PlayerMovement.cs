@@ -105,6 +105,10 @@ public class PlayerMovement : MonoBehaviour
         {
             GameObject.Find("flaregun").SendMessage("MoreAmmo", 10);
         }
+        else if( other.tag == "Door" )
+        {
+            other.GetComponent<Animator>().Play("OpenDoor");
+        }
     }
 
 }
