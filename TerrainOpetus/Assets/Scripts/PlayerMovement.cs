@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 { 
 
+    public Light valo;
+
     PlayerInputActions pia;
     CharacterController player;
 
@@ -24,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         gVelocity = Vector3.zero;
         pia = new PlayerInputActions();
         pia.Enable();
@@ -47,7 +48,8 @@ public class PlayerMovement : MonoBehaviour
         ControlGravity();
         ControlJump();
 
-        /* Koodi oven avaukseen
+     
+        /*Koodi oven avaukseen raycastilla (katsesuunta)
          
         RaycastHit rHit;
         bool collide = Physics.Raycast(transform.position, transform.forward, out rHit, 5);
@@ -56,10 +58,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(collide && rHit.collider.tag == "Door")
         {
-            rHit.collider.gameObject.transform.rotation = Quaternion.Euler(0, -90, 0);
-        }
-        */
-
+            rHit.collider.GetComponent<Animator>().SetTrigger("OpenDoor");
+        }*/
+        
     }
 
     void Pickup()
@@ -154,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if( other.tag == "Door" )
         {
-            other.GetComponent<Animator>().Play("OpenDoor");
+            other.GetComponent<Animator>().SetTrigger("OpenDoor");
         }
     }
 
