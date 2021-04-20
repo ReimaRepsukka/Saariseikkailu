@@ -10,10 +10,9 @@ public class ShootControl : MonoBehaviour
 
     public Text bulletNumText;
     public GameObject ammoPrefab;
+    public float forceMultiplier = 100;
 
     int bullets = 10;
-
-    bool isShooting;
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +27,8 @@ public class ShootControl : MonoBehaviour
     void Update()
     {
         //Onko painettu shoot-nappia
-        if (pia.Land.Shoot.triggered && bullets > 0 && !isShooting)
+        if (pia.Land.Shoot.triggered && bullets > 0)
         {
-            isShooting = true;
             //Haetaan ampumiseen sijainti kameran edest‰
             Vector3 shootPos = Camera.main.transform.position
                 + Camera.main.transform.forward * 0.5f;
@@ -42,10 +40,7 @@ public class ShootControl : MonoBehaviour
             GameObject ammo = Instantiate(ammoPrefab, shootPos, Quaternion.identity);
 
             //Asetetaan ammukselle l‰htˆvoima
-            ammo.GetComponent<Rigidbody>().AddForce(shootDirection * 100);
-
-            //Aktivoidaan aseen animaatio
-            GetComponent<Animator>().Play("FireGun");
+            ammo.GetComponent<Rigidbody>().AddForce(shootDirection * forceMultiplier);
            
             //P‰ivitet‰‰n ammusten m‰‰r‰
             bullets--;
@@ -65,10 +60,4 @@ public class ShootControl : MonoBehaviour
         RefreshBulletCount();  
     }
 
-    //T‰t‰ kutsutana animaation lopuksi eventtin‰. M‰‰ritell‰‰n 
-    //mallin animaatioiden import-asetuksissa.
-    void ShotDone()
-    {
-        isShooting = false;
-    }
 }

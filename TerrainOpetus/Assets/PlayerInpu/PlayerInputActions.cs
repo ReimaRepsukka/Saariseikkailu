@@ -57,6 +57,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pick"",
+                    ""type"": ""Button"",
+                    ""id"": ""e22bbe7d-8625-408d-807a-3830a39a6b99"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -235,6 +243,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69950d81-2562-402c-939b-b16e3d014f29"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +267,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_Land_View = m_Land.FindAction("View", throwIfNotFound: true);
         m_Land_Fast = m_Land.FindAction("Fast", throwIfNotFound: true);
         m_Land_Shoot = m_Land.FindAction("Shoot", throwIfNotFound: true);
+        m_Land_Pick = m_Land.FindAction("Pick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -302,6 +322,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Land_View;
     private readonly InputAction m_Land_Fast;
     private readonly InputAction m_Land_Shoot;
+    private readonly InputAction m_Land_Pick;
     public struct LandActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -311,6 +332,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @View => m_Wrapper.m_Land_View;
         public InputAction @Fast => m_Wrapper.m_Land_Fast;
         public InputAction @Shoot => m_Wrapper.m_Land_Shoot;
+        public InputAction @Pick => m_Wrapper.m_Land_Pick;
         public InputActionMap Get() { return m_Wrapper.m_Land; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -335,6 +357,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Shoot.started -= m_Wrapper.m_LandActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnShoot;
+                @Pick.started -= m_Wrapper.m_LandActionsCallbackInterface.OnPick;
+                @Pick.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnPick;
+                @Pick.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnPick;
             }
             m_Wrapper.m_LandActionsCallbackInterface = instance;
             if (instance != null)
@@ -354,6 +379,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Pick.started += instance.OnPick;
+                @Pick.performed += instance.OnPick;
+                @Pick.canceled += instance.OnPick;
             }
         }
     }
@@ -365,5 +393,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnView(InputAction.CallbackContext context);
         void OnFast(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnPick(InputAction.CallbackContext context);
     }
 }

@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     bool grounded;
 
+    Transform pickupItem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,15 @@ public class PlayerMovement : MonoBehaviour
         pia = new PlayerInputActions();
         pia.Enable();
 
+        pia.Land.Pick.started += (x) => Pickup();
+        pia.Land.Pick.canceled += (x) => Drop();
+
+
+
+     
         player = GetComponent<CharacterController>();
+
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -51,6 +61,42 @@ public class PlayerMovement : MonoBehaviour
         */
 
     }
+
+    void Pickup()
+    {
+        Transform cam = Camera.main.transform;
+
+        RaycastHit hit;
+
+        //L‰hetet‰‰n laatikkomallinen "s‰de" kameran keskelt‰
+        //et‰isyydelle 3. Regoidaan vain collidereihin, joilla Layer on Pickable
+        bool isHit = Physics.BoxCast(cam.position, new Vector3(1, 1, 1), 
+            cam.forward, out hit , cam.rotation, 3, LayerMask.GetMask("Pickable"));
+
+        if(isHit)
+        {
+            pickupItem = hit.transform;
+            pickupItem.GetComponent<Rigidbody>().isKinematic = true;
+            pickupItem.parent = cam.transform;
+
+            pickupItem.GetComponent<Renderer>().material.color = Color.yellow;
+        }
+
+    }
+
+    void Drop()
+    {
+        if( pickupItem != null )
+        {
+            pickupItem.GetComponent<Rigidbody>().isKinematic = false;
+            pickupItem.parent = null;
+
+            pickupItem.GetComponent<Renderer>().material.color = new Color(58f/255f, 1, 0);
+
+            pickupItem = null;
+        }
+    }
+
 
     void ControlJump()
     {
@@ -103,7 +149,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.tag == "AmmoBox")
         {
-            GameObject.Find("flaregun").SendMessage("MoreAmmo", 10);
+            //Pelaajan toisella scriptill‰ ShootControl on metodi MoreAmmo
+            gameObject.SendMessage("MoreAmmo", 10);
         }
         else if( other.tag == "Door" )
         {
