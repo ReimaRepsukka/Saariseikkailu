@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3731ade1d6e3ff34ca07c202b6de81d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valo: {fileID: 0}
   normalSpeed: 10
   fastSpeed: 30
   gravity: -10
@@ -250,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletNumText: {fileID: 0}
   ammoPrefab: {fileID: 100004, guid: a72885e93c1e4c5449d8f2a4888f2ed7, type: 3}
+  forceMultiplier: 100
 --- !u!1 &7839391547780455520
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,8 +380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRoot: {fileID: 7839391547551706423}
-<<<<<<< HEAD
-=======
 --- !u!82 &329146907903698012
 AudioSource:
   m_ObjectHideFlags: 0
@@ -476,83 +476,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &7839391546651157615
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 7839391548100864499}
-    m_Modifications:
-    - target: {fileID: 100004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_Name
-      value: flaregun
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.1463999
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.1463999
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.1463999
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.11317824
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.99357474
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -192.997
-      objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
---- !u!1 &7839391546651058891 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-  m_PrefabInstance: {fileID: 7839391546651157615}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7839391546650771179 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400004, guid: 1d204df1bf723d645a3ce8946a952fed, type: 3}
-  m_PrefabInstance: {fileID: 7839391546651157615}
-  m_PrefabAsset: {fileID: 0}
->>>>>>> c7bfd601083c05b5c629b693d3a096ed8ecb8993
