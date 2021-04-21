@@ -6,30 +6,11 @@ public class OpenDoorStateControl : StateMachineBehaviour
 {
     public AudioClip doorSound;
 
-    static bool doorOpen;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<AudioSource>().PlayOneShot(doorSound);
-
-        doorOpen = !doorOpen;
-
-
-        //Haetaan valon transform komponentti
-        Transform l = animator.transform.parent.Find("Valo");
-
-        //Vaihdetaan valon väri
-        if(doorOpen)
-        {
-            l.GetComponent<Light>().color = Color.green;
-        }
-        else
-        {
-            l.GetComponent<Light>().color = Color.red;
-        }
-
-        
+        animator.GetComponent<AudioSource>().PlayOneShot(doorSound);        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

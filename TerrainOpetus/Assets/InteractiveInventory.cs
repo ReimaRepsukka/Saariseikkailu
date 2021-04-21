@@ -11,15 +11,16 @@ public class InteractiveInventory : MonoBehaviour
 
     public void MouseHoverIn()
     {
-        Vector3 pos = GetComponent<RectTransform>().anchoredPosition3D;
+        /*Vector3 pos = GetComponent<RectTransform>().anchoredPosition3D;
         pos.y = 30;
-        GetComponent<RectTransform>().anchoredPosition3D = pos;
+        GetComponent<RectTransform>().anchoredPosition3D = pos;*/
     }
 
     public void MouseHoverOut()
-    {
+    { 
+        /*
         Vector3 pos = GetComponent<RectTransform>().anchoredPosition3D;
         pos.y = -15;
-        GetComponent<RectTransform>().anchoredPosition3D = pos;
+        GetComponent<RectTransform>().anchoredPosition3D = pos;*/
     }
 }

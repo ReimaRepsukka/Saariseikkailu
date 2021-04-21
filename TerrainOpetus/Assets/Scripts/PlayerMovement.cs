@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
      
         player = GetComponent<CharacterController>();
 
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             pickupItem.GetComponent<Rigidbody>().isKinematic = false;
             pickupItem.parent = null;
 
-            pickupItem.GetComponent<Renderer>().material.color = new Color(58f/255f, 1, 0);
+            pickupItem.GetComponent<Renderer>().material.color = Color.white;
 
             pickupItem = null;
         }

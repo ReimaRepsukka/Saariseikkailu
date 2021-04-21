@@ -20,7 +20,7 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 mouseLook = pia.Land.View.ReadValue<Vector2>() * Time.deltaTime * 100;
+        Vector2 mouseLook = pia.Land.View.ReadValue<Vector2>() * Time.deltaTime * 10;
 
         playerRoot.Rotate(0, mouseLook.x, 0);
 
